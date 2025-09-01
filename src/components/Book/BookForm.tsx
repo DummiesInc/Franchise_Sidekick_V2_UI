@@ -25,14 +25,14 @@ const BookForm = () => {
       <Button
         onClick={async () => {
           try {
-            const book = await endpoints.books.getBook({ id: 2 });
+            const book = await endpoints.states.getStates();
             console.log(book);
           } catch (err) {
             console.log(err);
           }
         }}
       >
-        Get Book
+        Get States
       </Button>
     </>
   );
