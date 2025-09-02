@@ -20,8 +20,11 @@ type SelectInputProps<T extends FieldValues> = {
   register: UseFormRegister<T>;
   errors: FieldErrors<T>;
   placeholder?: string;
-  onChange?: (value: string) => void; // custom onChange
+  onChange?: (value: number) => void; // custom onChange
+  valueType?: 'string' | 'number';
 };
+
+// How do I change the underline behavior of this component to always have the value set as number type instead of string
 
 export function SelectInput<T extends FieldValues>({
   label,
@@ -30,17 +33,31 @@ export function SelectInput<T extends FieldValues>({
   register,
   errors,
   placeholder,
+  valueType = 'string',
   onChange
 }: SelectInputProps<T>) {
   return (
     <div className="pt-2 pb-2">
       <Label className="block font-medium mb-1">{label}</Label>
       <Select
-        {...register(name)}
+        {...register(name, {
+          // setValueAs: (val) => (val === "" || valueType === 'number' ? undefined : Number(val)),
+          setValueAs: (val) => {
+            if (val === '') return undefined;
+            switch (valueType) {
+              case 'number':
+                return Number(val);
+              case 'string':
+                return val;
+              default:
+                return val;
+            }
+          }
+        })}
         // className="w-full border border-gray-300 p-2 rounded"
         onChange={(e) => {
           register(name as any).onChange(e);
-          if (onChange) onChange(e.target.value);
+          if (onChange) onChange(Number(e.target.value));
         }}
       >
         {placeholder && <option value="">{placeholder}</option>}
