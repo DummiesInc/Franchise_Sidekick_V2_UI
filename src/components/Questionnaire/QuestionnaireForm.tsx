@@ -56,7 +56,7 @@ const questionnaireValidationSchema = z.object({
     .nullable()
     .refine((val) => val !== null, { message: 'Select an option' }),
 
-  investmentRangeId: z.number(),
+  investmentRangesId: z.number(),
   startDate: z
     .string()
     .optional()
@@ -70,7 +70,7 @@ const initialValues: AddCustomerDto = {
   buyInReason: '',
   vision: '',
   involvement: '',
-  investmentRangeId: 0,
+  investmentRangesId: 0,
   startDate: ''
 };
 
@@ -97,7 +97,7 @@ export const CustomerQuestionnaireForm: React.FC = () => {
         vision: visionOptions[Number(data.vision)] ?? '',
         involvement: involvementOptions[Number(data.involvement)] ?? '',
         startDate: data.startDate ?? '',
-        investmentRangeId: Number(data?.investmentRangeId ?? 0)
+        investmentRangesId: Number(data?.investmentRangesId ?? 0)
       };
       const result = await endpoints.customer.create({ customer: payload });
       //   console.log(result);
@@ -181,7 +181,7 @@ export const CustomerQuestionnaireForm: React.FC = () => {
 
       <SelectInput
         label="What is your approximate available liquid capital for investment?"
-        name="investmentRangeId"
+        name="investmentRangesId"
         register={register}
         errors={errors}
         placeholder="Select an option"
