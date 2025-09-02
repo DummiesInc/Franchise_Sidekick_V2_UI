@@ -2,7 +2,28 @@
 import request from './request';
 
 export type AddBookDto = { name: string; author: string; retailPrice: number };
+export type AddCustomerDto = {
+  firstName: string;
+  lastName: string;
+  buyInReason: string;
+  vision: string;
+  involvement: string;
+  startDate: string;
+  investmentRangesId: number;
+};
 export type GetBookDto = { id: number | undefined; name: string | undefined };
+export type GetCustomerDto = { id: number; customerName: string };
+export type GetCustomerFranchiseReportDto = {
+  customerName: string;
+  buyInReason: string;
+  vision: string;
+  involvement: string;
+  startDate: string;
+};
+export type GetInvestmentRangeDto = {
+  id: number | undefined;
+  name: string | undefined;
+};
 export type GetStateDto = { id: number | undefined; name: string | undefined };
 
 export default {
@@ -18,6 +39,19 @@ export default {
     },
     hello(): Promise<{ message: string }> {
       return request('get', '/books/hello', {});
+    }
+  },
+  customer: {
+    create(params: { customer: AddCustomerDto }): Promise<GetCustomerDto> {
+      return request('post', '/customer/create', params);
+    },
+    customerFranchiseMatchReport(): Promise<GetCustomerFranchiseReportDto> {
+      return request('get', '/customer/customer_franchise_match_report', {});
+    }
+  },
+  investmentRange: {
+    investmentRangeList(): Promise<GetInvestmentRangeDto[]> {
+      return request('get', '/investment_range/investment_range_list', {});
     }
   },
   states: {
