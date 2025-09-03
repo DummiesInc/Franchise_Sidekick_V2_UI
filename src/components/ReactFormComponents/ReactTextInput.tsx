@@ -44,6 +44,10 @@ export function ReactTextInput<T extends FieldValues = FieldValues>(
         }}
       /> */}
       <TextInput
+        style={{
+          backgroundColor: 'white',
+          color: 'black'
+        }}
         {...register(name, { valueAsNumber: type === 'number' })}
         placeholder={placeholder}
         type={type}

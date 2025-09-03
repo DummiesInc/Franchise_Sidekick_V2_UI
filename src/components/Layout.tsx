@@ -29,9 +29,6 @@ export default function Layout({ children }: LayoutProps) {
           <NavbarLink as={Link} href="/" active={router.pathname === '/'}>
             Home
           </NavbarLink>
-          <NavbarLink as={Link} href="/map" active={router.pathname === '/map'}>
-            Franchise Map
-          </NavbarLink>
           <NavbarLink
             as={Link}
             href="/franchises"

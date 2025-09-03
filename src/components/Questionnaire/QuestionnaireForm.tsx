@@ -4,17 +4,10 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 import { ReactTextInput } from '../ReactFormComponents/ReactTextInput';
 import { SelectInput } from '../ReactFormComponents/SelectInput';
-import { ToggleInput } from '../ReactFormComponents/ToggleInput';
 import { DatePickerInput } from '../ReactFormComponents/DatePickerInput';
 import { Button } from 'flowbite-react';
-// import { fetchCapitals } from '@/src/utils/Services/CapitalService';
-// import {
-//   RequestCustomerDto,
-//   createCustomer
-// } from '@/src/utils/Services/CustomerService';
 import { useRouter } from 'next/router';
 import { ToastContainer, toast } from 'react-toastify';
-import { FlowDatePicker } from '../ReactFormComponents/FlowDatePicker';
 import { Involvement, Reason, Vision } from './questionnaireEnums';
 import endpoints, { AddCustomerDto } from '@/src/endpoints';
 import { SelectOption } from '../utils/selectOptions';
@@ -99,10 +92,9 @@ export const CustomerQuestionnaireForm: React.FC = () => {
         startDate: data.startDate ?? '',
         investmentRangesId: Number(data?.investmentRangesId ?? 0)
       };
-      const result = await endpoints.customer.create({ customer: payload });
-      //   console.log(result);
+      const customer = await endpoints.customer.create({ customer: payload });
       toast.success('Submitted!');
-      router.push(`/franchiseReport/${result?.id}`);
+      router.push(`/customer/${customer?.id}`);
     } catch (err) {
       toast.error('Failed to submit!');
     }
