@@ -6,10 +6,6 @@ import {
   useReactTable
 } from '@tanstack/react-table';
 import React, { useEffect, useState } from 'react';
-import { z } from 'zod';
-// I'm using these components
-// Show me the table filter setup similar to what's being shown in this page but with flowbite react
-// https://flowbite.com/blocks/application/advanced-tables/
 import {
   Table,
   TableBody,
@@ -21,17 +17,9 @@ import {
   TextInput,
   Spinner
 } from 'flowbite-react';
-//   import {
-//     FranchiseData,
-//     FranchiseFilter,
-//     getFranchises
-//   } from '@/src/utils/Services/FranchiseService';
 
 import Link from 'next/link';
-import endpoints, {
-  GetFranchiseDto,
-  RequestFranchisesDto
-} from '@/src/endpoints';
+import endpoints, { GetFranchiseDto } from '@/src/endpoints';
 import If from '../utils/If';
 
 const columnHelper = createColumnHelper<GetFranchiseDto>();
@@ -39,15 +27,15 @@ const columnHelper = createColumnHelper<GetFranchiseDto>();
 const columns = [
   columnHelper.accessor('id', {
     header: 'Id',
-    enableGlobalFilter: false,
-    cell: (info) => (
-      <Link
-        href={`/franchises/${info.getValue()}`}
-        className="text-blue-500 hover:underline"
-      >
-        {info.getValue()}
-      </Link>
-    )
+    enableGlobalFilter: false
+    // cell: (info) => (
+    //   <Link
+    //     href={`/franchises/${info.getValue()}`}
+    //     className="text-blue-500 hover:underline"
+    //   >
+    //     {info.getValue()}
+    //   </Link>
+    // )
   }),
   columnHelper.accessor('name', {
     header: 'Franchise Name',
@@ -66,18 +54,14 @@ const FranchiseTable = () => {
   useEffect(() => {
     (async () => {
       try {
-        //   await getFranchises(
-        //     currentPage,
-        //     setCurrentPage,
-        //     setTotalPages,
-        //     setData,
-        //     undefined
-        //   );
-        await endpoints.franchise.allFranchises({
+        const data = await endpoints.franchise.allFranchises({
           page: 0,
           perPage: 10,
           franchiseName: undefined
         });
+        setData(data.franchises);
+        setTotalPages(data.totalPages ?? 0);
+        setData(data.franchises ?? []);
       } catch (e) {
       } finally {
         setIsLoading(false);
@@ -86,15 +70,8 @@ const FranchiseTable = () => {
   }, []);
 
   const onPageChange = async (page: number) => {
-    //   await getFranchises(
-    //     page,
-    //     setCurrentPage,
-    //     setTotalPages,
-    //     setData,
-    //     undefined
-    //   );
     const data = await endpoints.franchise.allFranchises({
-      page: 0,
+      page: page,
       perPage: 10,
       franchiseName: undefined
     });

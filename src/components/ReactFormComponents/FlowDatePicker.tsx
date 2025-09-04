@@ -32,7 +32,6 @@ export function FlowDatePicker<T extends FieldValues>({
               className="w-full"
               value={field?.value ?? null}
               onChange={(date) => {
-                console.log(date);
                 field.onChange(date);
               }}
             />

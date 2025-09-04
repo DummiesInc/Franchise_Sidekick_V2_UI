@@ -25,8 +25,7 @@ const BookForm = () => {
       <Button
         onClick={async () => {
           try {
-            const book = await endpoints.states.getStates();
-            console.log(book);
+            await endpoints.states.getStates();
           } catch (err) {
             console.log(err);
           }
