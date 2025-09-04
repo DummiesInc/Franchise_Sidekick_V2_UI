@@ -35,19 +35,9 @@ export function ReactTextInput<T extends FieldValues = FieldValues>(
   } = props;
   const fieldError = get(errors, name) as FieldError | undefined;
   return (
-    // what should the type be if I want to be able to enter a decimal number?
     <div className="pt-2 pb-2">
       <Label className="block font-medium mb-1">{label}</Label>
-      {/* <TextInput {...register(name)} placeholder={placeholder} type={type} step={step}
-        onChange={(e) => {
-          if (onChange) onChange(e.target.value)
-        }}
-      /> */}
       <TextInput
-        style={{
-          backgroundColor: 'white',
-          color: 'black'
-        }}
         {...register(name, { valueAsNumber: type === 'number' })}
         placeholder={placeholder}
         type={type}

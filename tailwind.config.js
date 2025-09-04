@@ -3,7 +3,7 @@ const flowbiteReact = require('flowbite-react/plugin/tailwindcss');
 // tailwind.config.js
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  darkMode: 'media', // or false if you don’t want dark mode at all
+  darkMode: 'class', // or false if you don’t want dark mode at all
   content: [
     // ✅ Page Router lives here
     './pages/**/*.{js,ts,jsx,tsx}', // ✅ Your shared components

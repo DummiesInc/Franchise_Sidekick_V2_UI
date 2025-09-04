@@ -4,7 +4,6 @@ import { createTheme, ThemeProvider } from 'flowbite-react';
 import Layout from '@/src/components/Layout';
 import { ThemeInit } from '@/.flowbite-react/init';
 
-// I'm trying to override the default style of flowbite-react and this is not working as expected
 // const customTheme = createTheme({
 //   navbar: {
 //     link: {

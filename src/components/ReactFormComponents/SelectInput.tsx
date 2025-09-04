@@ -40,12 +40,7 @@ export function SelectInput<T extends FieldValues>({
     <div className="pt-2 pb-2">
       <Label className="block font-medium mb-1">{label}</Label>
       <Select
-        style={{
-          backgroundColor: 'white',
-          color: 'black'
-        }}
         {...register(name, {
-          // setValueAs: (val) => (val === "" || valueType === 'number' ? undefined : Number(val)),
           setValueAs: (val) => {
             if (val === '') return undefined;
             switch (valueType) {
@@ -58,7 +53,6 @@ export function SelectInput<T extends FieldValues>({
             }
           }
         })}
-        // className="w-full border border-gray-300 p-2 rounded"
         onChange={(e) => {
           register(name as any).onChange(e);
           if (onChange) onChange(Number(e.target.value));
