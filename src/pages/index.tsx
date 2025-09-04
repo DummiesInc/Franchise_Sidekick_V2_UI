@@ -2,7 +2,7 @@ import { CustomerQuestionnaireForm } from '../components/Questionnaire/Questionn
 
 export default function Home() {
   return (
-    <div className="p-6 bg-white border border-gray-200 rounded-lg shadow-sm max-w-xl w-full">
+    <div className="p-6 border border-gray-200 rounded-lg shadow-sm max-w-xl w-full">
       <h5 className="text-2xl font-bold tracking-tight text-gray-900 mb-4">
         Franchise Questionnaire
       </h5>

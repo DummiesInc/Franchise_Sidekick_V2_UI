@@ -28,7 +28,9 @@ export type GetCustomerFranchiseReportDto = {
   franchises?: GetFranchiseDto[];
 };
 export type GetFranchiseDto = {
+  id: number;
   name: string;
+  investmentRange: GetInvestmentRangeDto | undefined;
   operationInformation: GetOperationInformationDto | undefined;
   brandReputation: GetBrandReputationDto | undefined;
 };
@@ -42,6 +44,11 @@ export type GetOperationInformationDto = {
   corporateSupplierOnly: boolean;
 };
 export type GetStateDto = { id: number | undefined; name: string | undefined };
+export type RequestFranchisesDto = {
+  franchises: GetFranchiseDto[];
+  totalPages: number;
+  totalCount: number;
+};
 
 export default {
   books: {
@@ -70,6 +77,15 @@ export default {
         '/customer/customer_franchise_match_report',
         params
       );
+    }
+  },
+  franchise: {
+    allFranchises(params: {
+      page: number;
+      perPage: number;
+      franchiseName: string | undefined;
+    }): Promise<RequestFranchisesDto> {
+      return request('get', '/franchise/all_franchises', params);
     }
   },
   investmentRange: {
