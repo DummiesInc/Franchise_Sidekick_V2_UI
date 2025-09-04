@@ -60,6 +60,8 @@ const FranchiseTable = () => {
           franchiseName: undefined
         });
         setData(data.franchises);
+        setTotalPages(data.totalPages ?? 0);
+        setData(data.franchises ?? []);
       } catch (e) {
       } finally {
         setIsLoading(false);
@@ -69,7 +71,7 @@ const FranchiseTable = () => {
 
   const onPageChange = async (page: number) => {
     const data = await endpoints.franchise.allFranchises({
-      page: 0,
+      page: page,
       perPage: 10,
       franchiseName: undefined
     });
