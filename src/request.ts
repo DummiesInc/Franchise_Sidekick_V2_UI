@@ -10,7 +10,6 @@ export default function request(
   params: any
 ) {
   const config = method === 'get' ? { params: params } : { data: params };
-  console.log(`${BASE_URL}${path}`);
   return axios({
     method: method,
     url: `${BASE_URL}${path}`,
