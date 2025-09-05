@@ -1,13 +1,16 @@
 import { CustomerQuestionnaireForm } from '../components/Questionnaire/QuestionnaireForm';
+import useIsMobile from '../components/utils/hooks/useIsMobile';
 
 export default function Home() {
+  const isMobile = useIsMobile();
+  console.log(isMobile);
   return (
     <div className="p-6 border border-gray-200 rounded-lg shadow-sm max-w-xl w-full">
       <div
         style={{
           display: 'flex',
           flexDirection: 'column',
-          paddingLeft: 35,
+          paddingLeft: isMobile ? 10 : 35,
           paddingRight: 35,
           paddingTop: 10
         }}
