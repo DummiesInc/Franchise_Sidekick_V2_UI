@@ -38,24 +38,25 @@ const questionnaireValidationSchema = z.object({
 
   buyInReason: z
     .string()
-    .nullable()
     .refine((val) => val !== null, { message: 'Select an option' }),
   vision: z
     .string()
-    .nullable()
     .refine((val) => val !== null, { message: 'Select an option' }),
   involvement: z
     .string()
-    .nullable()
     .refine((val) => val !== null, { message: 'Select an option' }),
 
   investmentRangesId: z.number(),
   startDate: z
     .string()
     .optional()
-    .nullable()
     .refine((val) => val !== null, { message: 'Select an option' })
 });
+
+export type QuestionnaireFormSchemaType = z.infer<
+  typeof questionnaireValidationSchema
+>;
+
 
 const initialValues: AddCustomerDto = {
   firstName: '',
@@ -75,13 +76,13 @@ export const CustomerQuestionnaireForm: React.FC = () => {
     register,
     handleSubmit,
     formState: { errors, isSubmitting }
-  } = useForm<AddCustomerDto>({
+  } = useForm<QuestionnaireFormSchemaType>({
     resolver: zodResolver(questionnaireValidationSchema),
     defaultValues: initialValues,
     mode: 'all'
   });
 
-  const onSubmit = async (data: AddCustomerDto) => {
+  const onSubmit = async (data: QuestionnaireFormSchemaType) => {
     try {
       const payload: AddCustomerDto = {
         firstName: data.firstName ?? '',
