@@ -29,7 +29,8 @@ const FranchiseReportPDF: FC<Props> = ({ franchiseReport }) => {
       >
         <View style={styles.miniLogoWrapper}>
           <View style={styles.miniLogo}>
-            <Image src={'/images/franchise-sidekick-logo.png'} />
+            {/* <Image src={'/images/franchise-sidekick-logo.png'} /> */}
+            <Image src="/images/franchise-logo.png" />
           </View>
         </View>
         <View style={styles.wrapper}>
@@ -87,7 +88,7 @@ const FranchiseReportPDF: FC<Props> = ({ franchiseReport }) => {
                     marginBottom: 20
                   }}
                 >
-                  <View style={[styles.textWrapper, { paddingBottom: 10 }]}>
+                  <View style={[styles.textWrapper, { paddingBottom: 2 }]}>
                     <Text style={styles.textHeader}>{'Franchise:'}</Text>
                     <Text>{franchise?.name}</Text>
                   </View>
@@ -167,9 +168,9 @@ const styles = StyleSheet.create({
     alignItems: 'center'
   },
   miniLogo: {
-    height: '40px',
+    height: '100px',
     width: '25%',
-    marginBottom: 25,
+    // marginBottom: 25,
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center'

@@ -40,6 +40,19 @@ const columns = [
   columnHelper.accessor('name', {
     header: 'Franchise Name',
     enableGlobalFilter: true
+  }),
+  columnHelper.accessor('operationInformation.approvedSupplierOnly', {
+    header: 'Approved Supplier Only',
+    enableGlobalFilter: true
+  }),
+  columnHelper.accessor('operationInformation.corporateSupplierOnly', {
+    header: 'Corporate Supplier Only',
+    enableGlobalFilter: true
+  }),
+  columnHelper.accessor('operationInformation.staffCountRequirement', {
+    header: 'Operation Staff Count',
+    enableGlobalFilter: true,
+    cell: (info) => <p>{info.getValue()} staffs</p>
   })
 ];
 
@@ -50,6 +63,8 @@ const FranchiseTable = () => {
 
   const [globalFilter, setGlobalFilter] = useState<any>([]);
   const [isLoading, setIsLoading] = useState<boolean>(true);
+
+  console.log(data);
 
   useEffect(() => {
     (async () => {

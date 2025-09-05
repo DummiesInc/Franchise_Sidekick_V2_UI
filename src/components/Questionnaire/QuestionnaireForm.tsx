@@ -38,19 +38,28 @@ const questionnaireValidationSchema = z.object({
 
   buyInReason: z
     .string()
-    .refine((val) => val !== null, { message: 'Select an option' }),
+    .or(
+      z.undefined().refine(() => false, { message: 'Please select a value' })
+    ),
   vision: z
     .string()
-    .refine((val) => val !== null, { message: 'Select an option' }),
+    .or(
+      z.undefined().refine(() => false, { message: 'Please select a value' })
+    ),
   involvement: z
     .string()
-    .refine((val) => val !== null, { message: 'Select an option' }),
+    .or(
+      z.undefined().refine(() => false, { message: 'Please select a value' })
+    ),
 
-  investmentRangesId: z.number(),
+  investmentRangesId: z.number().refine((val) => val > 0, {
+    message: 'Please select a value'
+  }),
+
   startDate: z
     .string()
     .optional()
-    .refine((val) => val !== null, { message: 'Select an option' })
+    .or(z.undefined().refine(() => false, { message: 'Please select a value' }))
 });
 
 export type QuestionnaireFormSchemaType = z.infer<

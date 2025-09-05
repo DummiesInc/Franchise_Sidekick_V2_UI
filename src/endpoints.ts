@@ -13,10 +13,10 @@ export type AddCustomerDto = {
 };
 export type GetBookDto = { id: number | undefined; name: string | undefined };
 export type GetBrandReputationDto = {
-  franchiseProgramYear: string;
-  totalUnits: number;
-  growthRate: number;
-  satisfactionScore: number;
+  franchiseProgramYear: string | undefined;
+  totalUnits: number | undefined;
+  growthRate: number | undefined;
+  satisfactionScore: number | undefined;
 };
 export type GetCustomerDto = { id: number; customerName: string };
 export type GetCustomerFranchiseReportDto = {
@@ -39,9 +39,9 @@ export type GetInvestmentRangeDto = {
   name: string | undefined;
 };
 export type GetOperationInformationDto = {
-  staffCountRequirement: number;
-  approvedSupplierOnly: boolean;
-  corporateSupplierOnly: boolean;
+  staffCountRequirement: number | undefined;
+  approvedSupplierOnly: boolean | undefined;
+  corporateSupplierOnly: boolean | undefined;
 };
 export type GetStateDto = { id: number | undefined; name: string | undefined };
 export type RequestFranchisesDto = {

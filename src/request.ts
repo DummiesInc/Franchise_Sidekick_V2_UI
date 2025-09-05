@@ -2,7 +2,8 @@
 import axios, { AxiosRequestConfig } from 'axios';
 
 // const BASE_URL = 'http://localhost:3001'
-// const BASE_URL = 'http://127.0.0.1:3001';
+const BASE_URL = 'http://127.0.0.1:3001';
+// const BASE_URL = process.env.baseUrl;
 
 export default function request(
   method: 'get' | 'post',
@@ -12,7 +13,7 @@ export default function request(
   const config = method === 'get' ? { params: params } : { data: params };
   return axios({
     method: method,
-    url: `${process.env.baseUrl}${path}`,
+    url: `${BASE_URL}${path}`,
     ...config
   }).then((response) => response.data);
 }

@@ -16,15 +16,38 @@ const PDFViewer = dynamic(
 const CustomerReport: FC<Props> = ({ franchiseReport }) => {
   const isMobile = useIsMobile();
   return (
-    <PDFViewer
+    <div
       style={{
-        height: '950px',
-        width: isMobile ? '400px' : '700px'
+        display: 'flex',
+        flexDirection: 'column',
+        gap: 10
       }}
-      showToolbar={false}
     >
-      <FranchiseReportPDF franchiseReport={franchiseReport} />
-    </PDFViewer>
+      <div
+        style={{
+          display: 'flex',
+          flexDirection: 'column'
+        }}
+      >
+        <h5
+          style={{
+            fontWeight: 'bold'
+          }}
+        >
+          Franchise Report
+        </h5>
+        <p>Here are a list of franchises tailored to your investment needs</p>
+      </div>
+      <PDFViewer
+        style={{
+          height: '700px',
+          width: isMobile ? '400px' : '700px'
+        }}
+        showToolbar={false}
+      >
+        <FranchiseReportPDF franchiseReport={franchiseReport} />
+      </PDFViewer>
+    </div>
   );
 };
 

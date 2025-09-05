@@ -19,9 +19,17 @@ export default function Layout({ children }: LayoutProps) {
     <div className="min-h-screen flex flex-col">
       <Navbar fluid className="custom-navbar" applyTheme={'replace'}>
         <NavbarBrand href="/">
-          <img
+          {/* <img
             src="https://www.franchisesidekick.com/hubfs/assets/logos/franchise-sidekick-logo.svg"
             alt="Franchise Sidekick Logo"
+          /> */}
+          <img
+            src="/images/franchise-logo.png"
+            alt="logo"
+            style={{
+              width: '80px',
+              height: '80px'
+            }}
           />
         </NavbarBrand>
         <NavbarToggle />
