@@ -57,7 +57,6 @@ export type QuestionnaireFormSchemaType = z.infer<
   typeof questionnaireValidationSchema
 >;
 
-
 const initialValues: AddCustomerDto = {
   firstName: '',
   lastName: '',

@@ -2,8 +2,7 @@
 import axios from 'axios';
 import fs from 'fs';
 
-// const BASE_URL = 'http://localhost:3001';
-const BASE_URL = 'https://blooming-journey-74292-81647ffdeaf4.herokuapp.com'
+const BASE_URL = 'http://localhost:3001';
 
 axios
   .get(`${BASE_URL}/camille/endpoints.ts`)
