@@ -2,8 +2,8 @@
 import axios, { AxiosRequestConfig } from 'axios';
 
 // const BASE_URL = 'http://localhost:3001'
-const BASE_URL = 'http://127.0.0.1:3001';
-// const BASE_URL = process.env.baseUrl;
+// const BASE_URL = 'http://127.0.0.1:3001';
+const BASE_URL = process.env.baseUrl;
 
 export default function request(
   method: 'get' | 'post',
